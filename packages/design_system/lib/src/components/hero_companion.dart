@@ -12,8 +12,14 @@ enum CompanionState {
   active,
 }
 
-/// The home screen's hero section: a companion illustration centered over a
-/// soft sunrise-style glow, sized proportionally to the available width.
+/// The home screen's hero section: a large, dominant companion illustration
+/// over a soft sunrise-style glow that spans the full available width edge
+/// to edge — there is no card, background fill, or border framing either
+/// element; both render directly on whatever's behind this widget.
+///
+/// Callers should give this widget the full screen width (no horizontal
+/// inset) so the glow is genuinely edge-to-edge, not just edge-to-edge
+/// within some already-padded content column.
 ///
 /// 24px of vertical space (the 4px-grid `AppSpacing.lg`) is reserved above
 /// the section, between it and the top bar. No bottom padding is baked in —
@@ -24,8 +30,8 @@ class HeroCompanion extends StatelessWidget {
 
   final CompanionState state;
 
-  static const double _illustrationWidthFactor = 0.62; // 60-65% of content width
-  static const double _glowWidthFactor = 0.92;
+  static const double _illustrationWidthFactor = 0.75; // 70-80% of screen width
+  static const double _glowWidthFactor = 1.0; // edge to edge
   static const double _glowAspectRatio = 1.35; // glow width / glow height
 
   String get _assetName => switch (state) {

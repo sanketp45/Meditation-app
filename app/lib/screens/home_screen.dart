@@ -51,6 +51,13 @@ class HomeScreen extends StatelessWidget {
   static const double _bottomPadding = AppSpacing.xl; // 32
   static const double _heroStageRadius = 48;
 
+  /// How much of the hero stage's resolved height the white "ground" shape
+  /// rises to cover, measured from the bottom. The companion illustration
+  /// paints on top of both this and the cream fill (it's part of the
+  /// foreground content, not the background), so its lower portion visually
+  /// bleeds across the curved boundary rather than sitting fully above it.
+  static const double _heroGroundHeightFactor = 0.30;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,34 +70,49 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              DecoratedBox(
-                decoration: const BoxDecoration(
-                  color: AppColors.background,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(_heroStageRadius),
-                    bottomRight: Radius.circular(_heroStageRadius),
+              Stack(
+                children: [
+                  const Positioned.fill(
+                    child: ColoredBox(color: AppColors.background),
                   ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const SizedBox(height: _safeAreaTopGap),
-                    TopBar(
-                      initials: initials,
-                      pawCount: pawCount,
-                      onAvatarTap: onAvatarTap,
-                      onSearchChanged: onSearchChanged,
-                      onAssistantTap: onAssistantTap,
-                    ),
-                    const SizedBox(height: _sectionGap),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: _horizontalPadding,
+                  Positioned.fill(
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: FractionallySizedBox(
+                        heightFactor: _heroGroundHeightFactor,
+                        widthFactor: 1,
+                        child: DecoratedBox(
+                          decoration: const BoxDecoration(
+                            color: AppColors.surface,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(_heroStageRadius),
+                              topRight: Radius.circular(_heroStageRadius),
+                            ),
+                          ),
+                        ),
                       ),
-                      child: HeroCompanion(state: companionState),
                     ),
-                  ],
-                ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      const SizedBox(height: _safeAreaTopGap),
+                      // TopBar already carries its own 16px internal
+                      // padding, so it renders full-bleed here too.
+                      TopBar(
+                        initials: initials,
+                        pawCount: pawCount,
+                        onAvatarTap: onAvatarTap,
+                        onSearchChanged: onSearchChanged,
+                        onAssistantTap: onAssistantTap,
+                      ),
+                      const SizedBox(height: _sectionGap),
+                      // No horizontal padding: HeroCompanion needs the full
+                      // screen width so its glow is genuinely edge-to-edge.
+                      HeroCompanion(state: companionState),
+                    ],
+                  ),
+                ],
               ),
               const SizedBox(height: _heroToStatsGap),
               Padding(
