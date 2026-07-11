@@ -46,6 +46,7 @@ class HomeScreen extends StatelessWidget {
   static const double _horizontalPadding = AppSpacing.md; // 16
   static const double _safeAreaTopGap = 12;
   static const double _sectionGap = AppSpacing.lg; // 24
+  static const double _heroToStatsGap = AppSpacing.xs; // 4
   static const double _cardGap = 12;
   static const double _bottomPadding = AppSpacing.xl; // 32
   static const double _heroStageRadius = 48;
@@ -91,7 +92,7 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: _sectionGap),
+              const SizedBox(height: _heroToStatsGap),
               Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: _horizontalPadding,

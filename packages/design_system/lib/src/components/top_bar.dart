@@ -162,14 +162,13 @@ class _SearchFieldState extends State<_SearchField> {
 
   @override
   Widget build(BuildContext context) {
-    final Color fillColor = _isFocused ? AppColors.surface : AppColors.background;
     final Color iconColor = _isFocused ? AppColors.primary : AppColors.textSecondary;
 
     return Container(
       height: TopBar.controlSize,
       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
       decoration: BoxDecoration(
-        color: fillColor,
+        color: AppColors.surface,
         borderRadius: BorderRadius.circular(AppRadius.pill),
         border: _isFocused
             ? Border.all(color: AppColors.primary, width: 1.5)

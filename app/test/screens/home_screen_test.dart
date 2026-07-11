@@ -67,6 +67,18 @@ void main() {
     expect(find.text('12 paws today'), findsOneWidget); // stats headline
   });
 
+  testWidgets('leaves only a 4px gap between the hero image and the headline', (
+    tester,
+  ) async {
+    await tester.pumpWidget(buildScreen());
+    await tester.pumpAndSettle(const Duration(milliseconds: 15));
+
+    final heroBottom = tester.getBottomLeft(find.byType(HeroCompanion)).dy;
+    final statsTop = tester.getTopLeft(find.byType(StatsHeadline)).dy;
+
+    expect(statsTop - heroBottom, closeTo(4, 0.5));
+  });
+
   testWidgets('stacks multiple action cards with a 12px gap between them', (
     tester,
   ) async {

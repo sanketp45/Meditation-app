@@ -16,8 +16,9 @@ enum CompanionState {
 /// soft sunrise-style glow, sized proportionally to the available width.
 ///
 /// 24px of vertical space (the 4px-grid `AppSpacing.lg`) is reserved above
-/// and below the section so it sits correctly between the top bar and
-/// whatever comes next.
+/// the section, between it and the top bar. No bottom padding is baked in —
+/// callers own the gap between the hero and whatever comes next (e.g. the
+/// stats headline sits close beneath it, only 4px away).
 class HeroCompanion extends StatelessWidget {
   const HeroCompanion({super.key, required this.state});
 
@@ -35,7 +36,7 @@ class HeroCompanion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: AppSpacing.lg),
+      padding: const EdgeInsets.only(top: AppSpacing.lg),
       child: LayoutBuilder(
         builder: (context, constraints) {
           final glowWidth = constraints.maxWidth * _glowWidthFactor;
@@ -55,10 +56,11 @@ class HeroCompanion extends StatelessWidget {
                 ),
                 SizedBox(
                   width: illustrationWidth,
+                  height: glowHeight,
                   child: Image.asset(
                     _assetName,
                     package: 'design_system',
-                    fit: BoxFit.contain,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ],
