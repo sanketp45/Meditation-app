@@ -34,4 +34,25 @@ class AppTypography {
     height: 1.385,
     fontWeight: FontWeight.w400,
   );
+
+  static const TextStyle label = TextStyle(
+    fontFamily: 'Poppins',
+    fontSize: 14,
+    height: 1.429,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle labelStrong = TextStyle(
+    fontFamily: 'Poppins',
+    fontSize: 14,
+    height: 1.429,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const TextStyle bodySmall = TextStyle(
+    fontFamily: 'Poppins',
+    fontSize: 14,
+    height: 1.429,
+    fontWeight: FontWeight.w400,
+  );
 }

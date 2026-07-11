@@ -38,6 +38,33 @@
         "fontWeight": 400
       },
       "comment": "Stat lines"
+    },
+    "label": {
+      "value": {
+        "fontFamily": "Poppins",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 500
+      },
+      "comment": "Small emphasis text, e.g. avatar initials"
+    },
+    "label-strong": {
+      "value": {
+        "fontFamily": "Poppins",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 600
+      },
+      "comment": "Small, stronger emphasis text, e.g. counters"
+    },
+    "body-small": {
+      "value": {
+        "fontFamily": "Poppins",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400
+      },
+      "comment": "Compact body text, e.g. input placeholders"
     }
   }
 }

@@ -7,7 +7,8 @@
     "surface": { "value": "#FFFFFF", "comment": "Card white" },
     "text": {
       "primary": { "value": "#2E2A26" },
-      "secondary": { "value": "#8A8578" }
+      "secondary": { "value": "#8A8578" },
+      "inverse": { "value": "#FFFFFF", "comment": "Text on filled/colored surfaces, e.g. avatar initials" }
     },
     "border": { "value": "#EDE7DD" }
   }
