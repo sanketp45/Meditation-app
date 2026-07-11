@@ -91,6 +91,20 @@ class MeditationAppWidgetbook extends StatelessWidget {
             ),
           ],
         ),
+        WidgetbookCategory(
+          name: 'Screens',
+          children: [
+            WidgetbookComponent(
+              name: 'HomeScreen',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Assembled page',
+                  builder: (context) => const _HomeScreenPreview(),
+                ),
+              ],
+            ),
+          ],
+        ),
       ],
       addons: [
         ThemeAddon<ThemeData>(
@@ -102,6 +116,37 @@ class MeditationAppWidgetbook extends StatelessWidget {
             data: theme,
             child: child,
           ),
+        ),
+      ],
+    );
+  }
+}
+
+class _HomeScreenPreview extends StatelessWidget {
+  const _HomeScreenPreview();
+
+  @override
+  Widget build(BuildContext context) {
+    // HomeScreen owns its own Scaffold/background, so it's rendered
+    // directly rather than wrapped like the other, smaller UseCases.
+    return HomeScreen(
+      initials: 'SP',
+      pawCount: 12,
+      companionState: CompanionState.active,
+      statsSubtext: "You're on a roll today",
+      splitFlapText: 'PEACE COMES FROM WITHIN',
+      actionCards: [
+        ActionCard(
+          icon: LucideIcons.sportShoe,
+          title: 'Go for a walk',
+          range: '10 - 100',
+          onTap: () {},
+        ),
+        ActionCard(
+          icon: LucideIcons.wind,
+          title: 'Breathing exercise',
+          range: '5 - 20',
+          onTap: () {},
         ),
       ],
     );

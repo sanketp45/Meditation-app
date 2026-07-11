@@ -7,3 +7,4 @@ export 'src/components/hero_companion.dart';
 export 'src/components/split_flap_board.dart';
 export 'src/components/stats_headline.dart';
 export 'src/components/top_bar.dart';
+export 'src/screens/home_screen.dart';
