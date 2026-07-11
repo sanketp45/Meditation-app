@@ -11,6 +11,6 @@ void main() {
 
     expect(find.text('Go for a walk'), findsOneWidget);
     expect(find.text('Breathing exercise'), findsOneWidget);
-    expect(find.text('12 paws today'), findsOneWidget);
+    expect(find.text('0 paws today'), findsOneWidget);
   });
 }

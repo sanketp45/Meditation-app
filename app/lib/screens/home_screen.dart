@@ -48,30 +48,48 @@ class HomeScreen extends StatelessWidget {
   static const double _sectionGap = AppSpacing.lg; // 24
   static const double _cardGap = 12;
   static const double _bottomPadding = AppSpacing.xl; // 32
+  static const double _heroStageRadius = 48;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      // White below the hero stage; the stage itself (top bar + hero
+      // companion) carries its own cream background so only that section
+      // reads as "sky", matching the reference — not the whole page.
+      backgroundColor: AppColors.surface,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SizedBox(height: _safeAreaTopGap),
-              TopBar(
-                initials: initials,
-                pawCount: pawCount,
-                onAvatarTap: onAvatarTap,
-                onSearchChanged: onSearchChanged,
-                onAssistantTap: onAssistantTap,
-              ),
-              const SizedBox(height: _sectionGap),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: _horizontalPadding,
+              DecoratedBox(
+                decoration: const BoxDecoration(
+                  color: AppColors.background,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(_heroStageRadius),
+                    bottomRight: Radius.circular(_heroStageRadius),
+                  ),
                 ),
-                child: HeroCompanion(state: companionState),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const SizedBox(height: _safeAreaTopGap),
+                    TopBar(
+                      initials: initials,
+                      pawCount: pawCount,
+                      onAvatarTap: onAvatarTap,
+                      onSearchChanged: onSearchChanged,
+                      onAssistantTap: onAssistantTap,
+                    ),
+                    const SizedBox(height: _sectionGap),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: _horizontalPadding,
+                      ),
+                      child: HeroCompanion(state: companionState),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: _sectionGap),
               Padding(

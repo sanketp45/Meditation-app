@@ -17,7 +17,7 @@ class MeditationApp extends StatelessWidget {
       title: 'Meditation App',
       theme: ThemeData(
         useMaterial3: true,
-        scaffoldBackgroundColor: AppColors.background,
+        scaffoldBackgroundColor: AppColors.surface,
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
       ),
       home: const _Home(),
@@ -32,9 +32,9 @@ class _Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return HomeScreen(
       initials: 'SP',
-      pawCount: 12,
-      companionState: CompanionState.active,
-      statsSubtext: "You're on a roll today",
+      pawCount: 0,
+      companionState: CompanionState.sleeping,
+      statsSubtext: 'Ready to take a challenge?',
       splitFlapText: 'PEACE COMES FROM WITHIN',
       actionCards: [
         ActionCard(
