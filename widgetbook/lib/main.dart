@@ -27,11 +27,29 @@ class MeditationAppWidgetbook extends StatelessWidget {
               ],
             ),
             WidgetbookComponent(
+              name: 'GridActivityCard',
+              useCases: [
+                WidgetbookUseCase(
+                  name: '2x2 grid',
+                  builder: (context) => const _GridActivityCardGridPreview(),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
               name: 'HeroCompanion',
               useCases: [
                 WidgetbookUseCase(
                   name: 'States side by side',
                   builder: (context) => const _HeroCompanionStatesPreview(),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'QuoteTeaserCard',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Default',
+                  builder: (context) => const _QuoteTeaserCardPreview(),
                 ),
               ],
             ),
@@ -122,6 +140,94 @@ class _ActionCardWalkPreview extends StatelessWidget {
             icon: LucideIcons.sportShoe,
             title: 'Go for a walk',
             range: '10 - 100',
+            onTap: () {},
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _GridActivityCardGridPreview extends StatelessWidget {
+  const _GridActivityCardGridPreview();
+
+  static const double _gap = 12;
+
+  @override
+  Widget build(BuildContext context) {
+    return ColoredBox(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(AppSpacing.md),
+          child: Column(
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: GridActivityCard(
+                      icon: LucideIcons.sportShoe,
+                      title: 'Walk',
+                      range: '10 - 100',
+                      onStart: () {},
+                    ),
+                  ),
+                  const SizedBox(width: _gap),
+                  Expanded(
+                    child: GridActivityCard(
+                      icon: LucideIcons.wind,
+                      title: 'Breathe',
+                      range: '5 - 20',
+                      onStart: () {},
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: _gap),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: GridActivityCard(
+                      icon: LucideIcons.flower,
+                      title: 'Meditate',
+                      range: '20 - 50',
+                      onStart: () {},
+                    ),
+                  ),
+                  const SizedBox(width: _gap),
+                  Expanded(
+                    child: GridActivityCard(
+                      icon: LucideIcons.personStanding,
+                      title: 'Stretch',
+                      range: '10 - 30',
+                      onStart: () {},
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _QuoteTeaserCardPreview extends StatelessWidget {
+  const _QuoteTeaserCardPreview();
+
+  @override
+  Widget build(BuildContext context) {
+    return ColoredBox(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(AppSpacing.md),
+          child: QuoteTeaserCard(
+            title: 'Quote of the day',
+            subtitle: "Tap to flip today's quote",
             onTap: () {},
           ),
         ),

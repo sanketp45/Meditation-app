@@ -36,18 +36,30 @@ class _Home extends StatelessWidget {
       companionState: CompanionState.sleeping,
       statsSubtext: 'Ready to take a challenge?',
       splitFlapText: 'PEACE COMES FROM WITHIN',
-      actionCards: [
-        ActionCard(
+      activityCards: [
+        GridActivityCard(
           icon: LucideIcons.sportShoe,
-          title: 'Go for a walk',
+          title: 'Walk',
           range: '10 - 100',
-          onTap: () {},
+          onStart: () {},
         ),
-        ActionCard(
+        GridActivityCard(
           icon: LucideIcons.wind,
-          title: 'Breathing exercise',
+          title: 'Breathe',
           range: '5 - 20',
-          onTap: () {},
+          onStart: () {},
+        ),
+        GridActivityCard(
+          icon: LucideIcons.flower,
+          title: 'Meditate',
+          range: '20 - 50',
+          onStart: () {},
+        ),
+        GridActivityCard(
+          icon: LucideIcons.personStanding,
+          title: 'Stretch',
+          range: '10 - 30',
+          onStart: () {},
         ),
       ],
     );

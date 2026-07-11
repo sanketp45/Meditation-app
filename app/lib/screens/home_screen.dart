@@ -1,9 +1,11 @@
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
+import 'quote_of_the_day_screen.dart';
+
 /// The home screen: assembles [TopBar], [HeroCompanion], [StatsHeadline],
-/// [SplitFlapBoard], and a stack of [ActionCard]s into a single scrollable
-/// page.
+/// a [QuoteTeaserCard] linking out to the quote-of-the-day board, and a
+/// 2-column grid of [GridActivityCard]s into a single scrollable page.
 ///
 /// [pawCount] is passed to both the top bar's paw pill and the stats
 /// headline directly, so the two stay in sync at the data level — per
@@ -16,38 +18,39 @@ class HomeScreen extends StatelessWidget {
     required this.companionState,
     required this.statsSubtext,
     required this.splitFlapText,
-    required this.actionCards,
+    required this.activityCards,
+    this.quoteTeaserSubtitle = "Tap to flip today's quote",
+    this.activityGridHeading = 'Start stretching and start earning',
     this.onAvatarTap,
     this.onSearchChanged,
     this.onAssistantTap,
-    this.splitFlapDuration = const Duration(milliseconds: 350),
   });
 
   final String initials;
   final int pawCount;
   final CompanionState companionState;
   final String statsSubtext;
-  final String splitFlapText;
 
-  /// Fully-built [ActionCard] widgets, stacked in order with a gap between
-  /// each. Constructing them at the call site (rather than a parallel data
-  /// model) keeps this screen a straightforward assembly of the components
+  /// The quote shown on the [QuoteOfTheDayScreen] this screen navigates to.
+  final String splitFlapText;
+  final String quoteTeaserSubtitle;
+  final String activityGridHeading;
+
+  /// Fully-built [GridActivityCard] widgets, laid out 2 per row.
+  /// Constructing them at the call site (rather than a parallel data model)
+  /// keeps this screen a straightforward assembly of the components
   /// already built, nothing more.
-  final List<ActionCard> actionCards;
+  final List<GridActivityCard> activityCards;
 
   final VoidCallback? onAvatarTap;
   final ValueChanged<String>? onSearchChanged;
   final VoidCallback? onAssistantTap;
 
-  /// Forwarded to the split-flap board's `duration`. Overridable mainly so
-  /// tests aren't stuck waiting out the full reference scramble length.
-  final Duration splitFlapDuration;
-
   static const double _horizontalPadding = AppSpacing.md; // 16
   static const double _safeAreaTopGap = 12;
   static const double _sectionGap = AppSpacing.lg; // 24
   static const double _heroToStatsGap = AppSpacing.xs; // 4
-  static const double _cardGap = 12;
+  static const double _gridGap = 12;
   static const double _bottomPadding = AppSpacing.xl; // 32
   static const double _heroStageRadius = 48;
 
@@ -57,6 +60,14 @@ class HomeScreen extends StatelessWidget {
   /// foreground content, not the background), so its lower portion visually
   /// bleeds across the curved boundary rather than sitting fully above it.
   static const double _heroGroundHeightFactor = 0.30;
+
+  void _openQuoteOfTheDay(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => QuoteOfTheDayScreen(quoteText: splitFlapText),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -129,9 +140,10 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(
                   horizontal: _horizontalPadding,
                 ),
-                child: SplitFlapBoard(
-                  text: splitFlapText,
-                  duration: splitFlapDuration,
+                child: QuoteTeaserCard(
+                  title: 'Quote of the day',
+                  subtitle: quoteTeaserSubtitle,
+                  onTap: () => _openQuoteOfTheDay(context),
                 ),
               ),
               const SizedBox(height: _sectionGap),
@@ -139,20 +151,57 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(
                   horizontal: _horizontalPadding,
                 ),
-                child: Column(
-                  children: [
-                    for (var i = 0; i < actionCards.length; i++) ...[
-                      if (i > 0) const SizedBox(height: _cardGap),
-                      actionCards[i],
-                    ],
-                  ],
+                child: Text(
+                  activityGridHeading,
+                  style: AppTypography.title.copyWith(
+                    color: AppColors.textPrimary,
+                  ),
                 ),
+              ),
+              const SizedBox(height: _sectionGap),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: _horizontalPadding,
+                ),
+                child: _ActivityGrid(cards: activityCards, gap: _gridGap),
               ),
               const SizedBox(height: _bottomPadding),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+/// Lays [cards] out 2 per row with [gap] between columns and rows. The last
+/// row is padded with an empty cell if [cards] has an odd length.
+class _ActivityGrid extends StatelessWidget {
+  const _ActivityGrid({required this.cards, required this.gap});
+
+  final List<GridActivityCard> cards;
+  final double gap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        for (var i = 0; i < cards.length; i += 2) ...[
+          if (i > 0) SizedBox(height: gap),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(child: cards[i]),
+              SizedBox(width: gap),
+              Expanded(
+                child: i + 1 < cards.length
+                    ? cards[i + 1]
+                    : const SizedBox.shrink(),
+              ),
+            ],
+          ),
+        ],
+      ],
     );
   }
 }

@@ -15,7 +15,9 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('ActionCard'), findsOneWidget);
+    expect(find.text('GridActivityCard'), findsOneWidget);
     expect(find.text('HeroCompanion'), findsOneWidget);
+    expect(find.text('QuoteTeaserCard'), findsOneWidget);
     expect(find.text('SplitFlapBoard'), findsOneWidget);
     expect(find.text('Mid animation'), findsOneWidget);
     expect(find.text('Settled'), findsOneWidget);
@@ -27,6 +29,6 @@ void main() {
     expect(find.text('Disabled'), findsOneWidget);
     expect(find.text('Screens'), findsNothing);
     expect(find.text('HomeScreen'), findsNothing);
-    expect(find.text('5 Components • 9 Use-cases'), findsOneWidget);
+    expect(find.text('7 Components • 11 Use-cases'), findsOneWidget);
   });
 }
