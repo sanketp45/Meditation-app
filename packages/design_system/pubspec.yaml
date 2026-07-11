@@ -21,6 +21,9 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  assets:
+    - assets/companion/cat_sleeping.png
+    - assets/companion/cat_active.png
   fonts:
     - family: Poppins
       fonts:

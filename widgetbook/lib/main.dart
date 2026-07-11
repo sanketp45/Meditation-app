@@ -17,6 +17,15 @@ class MeditationAppWidgetbook extends StatelessWidget {
           name: 'Components',
           children: [
             WidgetbookComponent(
+              name: 'HeroCompanion',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'States side by side',
+                  builder: (context) => const _HeroCompanionStatesPreview(),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
               name: 'TopBar',
               useCases: [
                 WidgetbookUseCase(
@@ -57,6 +66,61 @@ class MeditationAppWidgetbook extends StatelessWidget {
             child: child,
           ),
         ),
+      ],
+    );
+  }
+}
+
+class _HeroCompanionStatesPreview extends StatelessWidget {
+  const _HeroCompanionStatesPreview();
+
+  @override
+  Widget build(BuildContext context) {
+    return ColoredBox(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(AppSpacing.md),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Expanded(
+                child: _HeroCompanionLabeled(
+                  label: 'Sleeping (no activity yet)',
+                  state: CompanionState.sleeping,
+                ),
+              ),
+              SizedBox(width: AppSpacing.md),
+              Expanded(
+                child: _HeroCompanionLabeled(
+                  label: 'Active (activity logged)',
+                  state: CompanionState.active,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _HeroCompanionLabeled extends StatelessWidget {
+  const _HeroCompanionLabeled({required this.label, required this.state});
+
+  final String label;
+  final CompanionState state;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          label,
+          textAlign: TextAlign.center,
+          style: AppTypography.caption.copyWith(color: AppColors.textSecondary),
+        ),
+        HeroCompanion(state: state),
       ],
     );
   }
