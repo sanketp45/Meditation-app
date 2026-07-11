@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "echo 'no install step required, flutter is installed in buildCommand'",
+  "buildCommand": "bash vercel-build.sh",
+  "outputDirectory": "build/web",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
