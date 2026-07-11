@@ -71,7 +71,7 @@ class SplitFlapBoard extends StatelessWidget {
         final textStyle = TextStyle(
           fontWeight: FontWeight.w700,
           fontSize: tileHeight * 0.42,
-          color: AppColors.textInverse,
+          color: AppColors.textPrimary,
           height: 1,
         );
 
@@ -100,8 +100,8 @@ class SplitFlapBoard extends StatelessWidget {
                         scrambleInterval: scrambleInterval,
                         startDelay: columnStagger * col + rowStagger * row,
                         textStyle: textStyle,
-                        tileColor: AppColors.textPrimary,
-                        splitLineColor: Colors.black.withValues(alpha: 0.4),
+                        tileColor: AppColors.border,
+                        splitLineColor: Colors.black.withValues(alpha: 0.15),
                         tileRadius: _tileRadius,
                         autoPlay: autoPlay,
                       ),
