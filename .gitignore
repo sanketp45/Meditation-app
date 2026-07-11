@@ -1,0 +1,24 @@
+# Flutter/Dart
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/build/
+**/.packages
+**/pubspec.lock
+!/pubspec.lock
+**/ios/Flutter/.last_build_id
+**/.pub-cache/
+**/.pub/
+**/*.g.dart.bak
+
+# Node
+node_modules/
+npm-debug.log*
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store

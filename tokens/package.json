@@ -1,0 +1,13 @@
+{
+  "name": "meditation-app-tokens",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Style Dictionary pipeline turning hand-written design tokens into Dart theme files for the Flutter design_system package.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "style-dictionary": "^5.5.0"
+  }
+}

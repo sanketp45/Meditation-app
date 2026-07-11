@@ -1,0 +1,14 @@
+{
+  "color": {
+    "primary": { "value": "#6C63FF", "comment": "Buttons and accents" },
+    "companion": { "value": "#7B74E0", "comment": "Companion accent" },
+    "session-background": { "value": "#F6C89A", "comment": "Warm session background" },
+    "background": { "value": "#FDF6EC", "comment": "Cream background" },
+    "surface": { "value": "#FFFFFF", "comment": "Card white" },
+    "text": {
+      "primary": { "value": "#2E2A26" },
+      "secondary": { "value": "#8A8578" }
+    },
+    "border": { "value": "#EDE7DD" }
+  }
+}

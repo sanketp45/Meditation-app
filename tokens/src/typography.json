@@ -1,0 +1,43 @@
+{
+  "typography": {
+    "font-family": {
+      "base": { "value": "Alan Sans" }
+    },
+    "display": {
+      "value": {
+        "fontFamily": "Alan Sans",
+        "fontSize": 40,
+        "lineHeight": 48,
+        "fontWeight": 600
+      },
+      "comment": "Session timer"
+    },
+    "heading": {
+      "value": {
+        "fontFamily": "Alan Sans",
+        "fontSize": 18,
+        "lineHeight": 24,
+        "fontWeight": 500
+      },
+      "comment": "Stat numbers"
+    },
+    "body": {
+      "value": {
+        "fontFamily": "Alan Sans",
+        "fontSize": 16,
+        "lineHeight": 24,
+        "fontWeight": 500
+      },
+      "comment": "Card titles"
+    },
+    "caption": {
+      "value": {
+        "fontFamily": "Alan Sans",
+        "fontSize": 13,
+        "lineHeight": 18,
+        "fontWeight": 400
+      },
+      "comment": "Stat lines"
+    }
+  }
+}
