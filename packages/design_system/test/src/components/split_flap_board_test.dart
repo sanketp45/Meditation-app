@@ -75,6 +75,41 @@ void main() {
     expect(find.text('W'), findsWidgets);
   });
 
+  testWidgets(
+    'settled tiles show each character exactly twice (top+bottom face), '
+    'not doubled by a redundant flap overlay',
+    (tester) async {
+      // Regression test: at rest the flap overlay used to sit at its
+      // start angle (flat, fully visible) instead of being hidden,
+      // double-painting on top of the identical static base underneath.
+      await tester.pumpWidget(
+        _wrap(const SplitFlapBoard(text: 'HI', autoPlay: false)),
+      );
+      await tester.pump();
+
+      expect(find.text('H'), findsNWidgets(2));
+      expect(find.text('I'), findsNWidgets(2));
+    },
+  );
+
+  testWidgets(
+    'a tile settled by a real flip also drops back to exactly two faces',
+    (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          const SplitFlapBoard(
+            text: 'HI',
+            duration: Duration(milliseconds: 20),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle(const Duration(milliseconds: 20));
+
+      expect(find.text('H'), findsNWidgets(2));
+      expect(find.text('I'), findsNWidgets(2));
+    },
+  );
+
   testWidgets('re-scrambles when the text input changes', (tester) async {
     await tester.pumpWidget(
       _wrap(

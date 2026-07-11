@@ -216,6 +216,17 @@ class _SplitFlapTileState extends State<SplitFlapTile>
               animation: _controller,
               builder: (context, child) {
                 final t = _controller.value;
+
+                // At rest (t == 0 before the first flip, or t == 1 right
+                // after one completes) the flaps sit at their start/end
+                // angles, which is flat and fully visible for one of them —
+                // redundantly painting on top of the identical static base
+                // underneath. Only render the overlay while a flip is
+                // actually in progress.
+                if (t <= 0.0 || t >= 1.0) {
+                  return const SizedBox.shrink();
+                }
+
                 final topProgress = (t / _topFlapSpan).clamp(0.0, 1.0);
                 final bottomProgress =
                     ((t - _bottomFlapDelay) / _topFlapSpan).clamp(0.0, 1.0);
