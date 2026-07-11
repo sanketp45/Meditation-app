@@ -3,5 +3,6 @@ export 'generated/app_radius.dart';
 export 'generated/app_spacing.dart';
 export 'generated/app_typography.dart';
 export 'src/components/hero_companion.dart';
+export 'src/components/split_flap_board.dart';
 export 'src/components/stats_headline.dart';
 export 'src/components/top_bar.dart';

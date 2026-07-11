@@ -15,12 +15,15 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('HeroCompanion'), findsOneWidget);
+    expect(find.text('SplitFlapBoard'), findsOneWidget);
+    expect(find.text('Mid animation'), findsOneWidget);
+    expect(find.text('Settled'), findsOneWidget);
     expect(find.text('StatsHeadline'), findsOneWidget);
     expect(find.text('TopBar'), findsOneWidget);
     expect(find.text('Default'), findsOneWidget);
     expect(find.text('Typing'), findsOneWidget);
     expect(find.text('Filled'), findsOneWidget);
     expect(find.text('Disabled'), findsOneWidget);
-    expect(find.text('3 Components • 6 Use-cases'), findsOneWidget);
+    expect(find.text('4 Components • 8 Use-cases'), findsOneWidget);
   });
 }

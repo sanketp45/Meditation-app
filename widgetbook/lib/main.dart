@@ -26,6 +26,24 @@ class MeditationAppWidgetbook extends StatelessWidget {
               ],
             ),
             WidgetbookComponent(
+              name: 'SplitFlapBoard',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Mid animation',
+                  builder: (context) => const _SplitFlapBoardPreview(
+                    label: 'Mid animation (live — scrambling on load)',
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Settled',
+                  builder: (context) => const _SplitFlapBoardPreview(
+                    label: 'Settled',
+                    autoPlay: false,
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
               name: 'StatsHeadline',
               useCases: [
                 WidgetbookUseCase(
@@ -131,6 +149,43 @@ class _HeroCompanionLabeled extends StatelessWidget {
         ),
         HeroCompanion(state: state),
       ],
+    );
+  }
+}
+
+const String _splitFlapSampleQuote = 'PEACE COMES FROM WITHIN';
+
+class _SplitFlapBoardPreview extends StatelessWidget {
+  const _SplitFlapBoardPreview({required this.label, this.autoPlay = true});
+
+  final String label;
+  final bool autoPlay;
+
+  @override
+  Widget build(BuildContext context) {
+    return ColoredBox(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(AppSpacing.md),
+          child: Column(
+            children: [
+              Text(
+                label,
+                textAlign: TextAlign.center,
+                style: AppTypography.caption.copyWith(
+                  color: AppColors.textSecondary,
+                ),
+              ),
+              const SizedBox(height: AppSpacing.sm),
+              SplitFlapBoard(
+                text: _splitFlapSampleQuote,
+                autoPlay: autoPlay,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
