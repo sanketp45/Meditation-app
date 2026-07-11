@@ -14,6 +14,7 @@ void main() {
     await tester.pumpWidget(const MeditationAppWidgetbook());
     await tester.pumpAndSettle();
 
+    expect(find.text('ActionCard'), findsOneWidget);
     expect(find.text('HeroCompanion'), findsOneWidget);
     expect(find.text('SplitFlapBoard'), findsOneWidget);
     expect(find.text('Mid animation'), findsOneWidget);
@@ -24,6 +25,6 @@ void main() {
     expect(find.text('Typing'), findsOneWidget);
     expect(find.text('Filled'), findsOneWidget);
     expect(find.text('Disabled'), findsOneWidget);
-    expect(find.text('4 Components • 8 Use-cases'), findsOneWidget);
+    expect(find.text('5 Components • 9 Use-cases'), findsOneWidget);
   });
 }

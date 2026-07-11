@@ -21,6 +21,13 @@ class AppTypography {
     fontWeight: FontWeight.w600,
   );
 
+  static const TextStyle titleSmall = TextStyle(
+    fontFamily: 'Quicksand',
+    fontSize: 16,
+    height: 1.375,
+    fontWeight: FontWeight.w600,
+  );
+
   static const TextStyle heading = TextStyle(
     fontFamily: 'Poppins',
     fontSize: 18,

@@ -21,6 +21,15 @@
       },
       "comment": "Section headlines, e.g. stats headline"
     },
+    "title-small": {
+      "value": {
+        "fontFamily": "Quicksand",
+        "fontSize": 16,
+        "lineHeight": 22,
+        "fontWeight": 600
+      },
+      "comment": "Compact headlines, e.g. action card titles"
+    },
     "heading": {
       "value": {
         "fontFamily": "Poppins",

@@ -1,5 +1,6 @@
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 void main() {
@@ -16,6 +17,15 @@ class MeditationAppWidgetbook extends StatelessWidget {
         WidgetbookCategory(
           name: 'Components',
           children: [
+            WidgetbookComponent(
+              name: 'ActionCard',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Walk',
+                  builder: (context) => const _ActionCardWalkPreview(),
+                ),
+              ],
+            ),
             WidgetbookComponent(
               name: 'HeroCompanion',
               useCases: [
@@ -94,6 +104,28 @@ class MeditationAppWidgetbook extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _ActionCardWalkPreview extends StatelessWidget {
+  const _ActionCardWalkPreview();
+
+  @override
+  Widget build(BuildContext context) {
+    return ColoredBox(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(AppSpacing.md),
+          child: ActionCard(
+            icon: LucideIcons.sportShoe,
+            title: 'Go for a walk',
+            range: '10 - 100',
+            onTap: () {},
+          ),
+        ),
+      ),
     );
   }
 }
