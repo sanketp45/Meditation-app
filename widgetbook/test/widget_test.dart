@@ -15,6 +15,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('TopBar'), findsOneWidget);
-    expect(find.text('1 Component • 1 Use-case'), findsOneWidget);
+    expect(find.text('1 Component • 4 Use-cases'), findsOneWidget);
   });
 }
