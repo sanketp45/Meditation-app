@@ -1,11 +1,11 @@
 {
   "typography": {
     "font-family": {
-      "base": { "value": "Alan Sans" }
+      "base": { "value": "Poppins" }
     },
     "display": {
       "value": {
-        "fontFamily": "Alan Sans",
+        "fontFamily": "Poppins",
         "fontSize": 40,
         "lineHeight": 48,
         "fontWeight": 600
@@ -14,7 +14,7 @@
     },
     "heading": {
       "value": {
-        "fontFamily": "Alan Sans",
+        "fontFamily": "Poppins",
         "fontSize": 18,
         "lineHeight": 24,
         "fontWeight": 500
@@ -23,7 +23,7 @@
     },
     "body": {
       "value": {
-        "fontFamily": "Alan Sans",
+        "fontFamily": "Poppins",
         "fontSize": 16,
         "lineHeight": 24,
         "fontWeight": 500
@@ -32,7 +32,7 @@
     },
     "caption": {
       "value": {
-        "fontFamily": "Alan Sans",
+        "fontFamily": "Poppins",
         "fontSize": 13,
         "lineHeight": 18,
         "fontWeight": 400

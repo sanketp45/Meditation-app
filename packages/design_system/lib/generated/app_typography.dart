@@ -8,28 +8,28 @@ class AppTypography {
   AppTypography._();
 
   static const TextStyle display = TextStyle(
-    fontFamily: 'Alan Sans',
+    fontFamily: 'Poppins',
     fontSize: 40,
     height: 1.200,
     fontWeight: FontWeight.w600,
   );
 
   static const TextStyle heading = TextStyle(
-    fontFamily: 'Alan Sans',
+    fontFamily: 'Poppins',
     fontSize: 18,
     height: 1.333,
     fontWeight: FontWeight.w500,
   );
 
   static const TextStyle body = TextStyle(
-    fontFamily: 'Alan Sans',
+    fontFamily: 'Poppins',
     fontSize: 16,
     height: 1.500,
     fontWeight: FontWeight.w500,
   );
 
   static const TextStyle caption = TextStyle(
-    fontFamily: 'Alan Sans',
+    fontFamily: 'Poppins',
     fontSize: 13,
     height: 1.385,
     fontWeight: FontWeight.w400,
