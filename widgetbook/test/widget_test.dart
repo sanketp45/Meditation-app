@@ -25,8 +25,8 @@ void main() {
     expect(find.text('Typing'), findsOneWidget);
     expect(find.text('Filled'), findsOneWidget);
     expect(find.text('Disabled'), findsOneWidget);
-    expect(find.text('Screens'), findsOneWidget);
-    expect(find.text('HomeScreen'), findsOneWidget);
-    expect(find.text('6 Components • 10 Use-cases'), findsOneWidget);
+    expect(find.text('Screens'), findsNothing);
+    expect(find.text('HomeScreen'), findsNothing);
+    expect(find.text('5 Components • 9 Use-cases'), findsOneWidget);
   });
 }

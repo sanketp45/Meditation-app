@@ -1,12 +1,5 @@
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
-
-import '../../generated/app_colors.dart';
-import '../../generated/app_spacing.dart';
-import '../components/action_card.dart';
-import '../components/hero_companion.dart';
-import '../components/split_flap_board.dart';
-import '../components/stats_headline.dart';
-import '../components/top_bar.dart';
 
 /// The home screen: assembles [TopBar], [HeroCompanion], [StatsHeadline],
 /// [SplitFlapBoard], and a stack of [ActionCard]s into a single scrollable

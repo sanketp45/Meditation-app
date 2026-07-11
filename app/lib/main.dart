@@ -2,6 +2,8 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
+import 'screens/home_screen.dart';
+
 void main() {
   runApp(const MeditationApp());
 }
