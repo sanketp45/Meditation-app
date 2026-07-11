@@ -20,6 +20,11 @@ else
   echo "Using cached Flutter SDK at ${FLUTTER_HOME}/flutter"
 fi
 
+# Vercel's build image runs as a different user than the one that owns
+# this checkout, so git refuses to operate on the extracted SDK ("detected
+# dubious ownership") until it's explicitly marked safe.
+git config --global --add safe.directory "${FLUTTER_HOME}/flutter"
+
 export PATH="${FLUTTER_HOME}/flutter/bin:${PATH}"
 export CI=true
 
