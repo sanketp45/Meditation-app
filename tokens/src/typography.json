@@ -12,6 +12,15 @@
       },
       "comment": "Session timer"
     },
+    "title": {
+      "value": {
+        "fontFamily": "Quicksand",
+        "fontSize": 24,
+        "lineHeight": 32,
+        "fontWeight": 600
+      },
+      "comment": "Section headlines, e.g. stats headline"
+    },
     "heading": {
       "value": {
         "fontFamily": "Poppins",

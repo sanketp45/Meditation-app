@@ -26,6 +26,15 @@ class MeditationAppWidgetbook extends StatelessWidget {
               ],
             ),
             WidgetbookComponent(
+              name: 'StatsHeadline',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Single vs triple digit count',
+                  builder: (context) => const _StatsHeadlineCountsPreview(),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
               name: 'TopBar',
               useCases: [
                 WidgetbookUseCase(
@@ -121,6 +130,64 @@ class _HeroCompanionLabeled extends StatelessWidget {
           style: AppTypography.caption.copyWith(color: AppColors.textSecondary),
         ),
         HeroCompanion(state: state),
+      ],
+    );
+  }
+}
+
+class _StatsHeadlineCountsPreview extends StatelessWidget {
+  const _StatsHeadlineCountsPreview();
+
+  @override
+  Widget build(BuildContext context) {
+    return ColoredBox(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(AppSpacing.md),
+          child: Column(
+            children: const [
+              _StatsHeadlineLabeled(
+                label: 'Single digit count',
+                pawCount: 3,
+                subtext: 'Complete a session to earn more',
+              ),
+              SizedBox(height: AppSpacing.xl),
+              _StatsHeadlineLabeled(
+                label: 'Triple digit count',
+                pawCount: 128,
+                subtext: "You're on a roll today",
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _StatsHeadlineLabeled extends StatelessWidget {
+  const _StatsHeadlineLabeled({
+    required this.label,
+    required this.pawCount,
+    required this.subtext,
+  });
+
+  final String label;
+  final int pawCount;
+  final String subtext;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          label,
+          textAlign: TextAlign.center,
+          style: AppTypography.caption.copyWith(color: AppColors.textSecondary),
+        ),
+        const SizedBox(height: AppSpacing.sm),
+        StatsHeadline(pawCount: pawCount, subtext: subtext),
       ],
     );
   }

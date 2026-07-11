@@ -41,3 +41,7 @@ flutter:
           weight: 800
         - asset: fonts/Poppins/Poppins-Black.ttf
           weight: 900
+    - family: Quicksand
+      fonts:
+        - asset: fonts/Quicksand/Quicksand-SemiBold.ttf
+          weight: 600
